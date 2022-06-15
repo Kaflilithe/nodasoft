@@ -2,9 +2,9 @@
   "name": "nodasoft",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "build": "parcel build --public-url . index.html --dist-dir public"
   },
   "keywords": [],
   "author": "",
