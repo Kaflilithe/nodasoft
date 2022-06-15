@@ -1,22 +1,153 @@
-body, html {
-  height: 100%;
-  margin: 0;
-}
+@import "base";
+@import "mixins";
+
+$gap: 15px;
 
 .wrapper {
   max-width: 1200px;
   width: 100%;
-  padding: 0 15px;
+  box-sizing: border-box;
+  padding: 0 $gap;
   background: #C0DBD9;
-  height: 100%;
   margin: 0 auto;
+  position: relative;
 }
 
-.marY-15 {
-  margin: 15px 0;
+.main {
+  height: 100%;
+}
+
+.btn {
+  background: #A5C7F9;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-weight: 400;
+  font-size: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
 }
 
 .header {
   background: #7FAFF7;
   padding: 30px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.popup-checkbox, .popup {
+  display: none;
+}
+
+.popup-checkbox:checked + .popup {
+  opacity: 1;
+  @include flex(row, center, center);
+}
+
+.popup {
+  min-width: 400px;
+  min-height: 400px;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  z-index: 9;
+  transform: translateY(100%);
+  background-color: #fff;
+  transition: all .3s ease;
+  @media (max-width: 420px) {
+    min-width: 200px;
+    min-height: 200px;
+  }
+  span {
+    font-size: 53px;
+  }
+
+  &--close {
+    top: $gap;
+    right: $gap;
+    background: #7FAFF6;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.section {
+  margin-top: $gap;
+}
+
+.section-1 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+    "a a b b b c"
+    "d d d d d e";
+  grid-gap: $gap;
+  background: #B3F95A;
+  counter-reset: list;
+}
+
+.section-1 .box-content {
+  background: #8AD191;
+  min-height: 200px;
+  font-weight: 400;
+  font-size: 53px;
+  color: #FFFFFF;
+  @include flex(row, center, center);
+
+  &:before {
+    counter-increment: list;
+    content: counter(list);
+  }
+
+  &:nth-child(1) {
+    grid-area: a;
+  }
+
+  &:nth-child(2) {
+    grid-area: b;
+  }
+
+  &:nth-child(3) {
+    grid-area: c;
+  }
+
+  &:nth-child(4) {
+    grid-area: d;
+  }
+
+  &:nth-child(5) {
+    grid-area: e;
+  }
+}
+
+.section-2 {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  padding: 2.5%;
+  grid-gap: 2.7%;
+  background: #88B5BF;
+}
+
+.section-2 .box-content {
+  background: #0D89B0;
+  position: relative;
+  width: 100%;
+  padding-top: 77.79%;
+}
+
+.footer {
+  background: #7FAFF7;
+  padding: 2 * $gap;
+  margin-top: 100px;
 }
